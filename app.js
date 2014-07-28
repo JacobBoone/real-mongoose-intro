@@ -29,6 +29,24 @@ app.post('/signup', function(req, res){
 	res.send('You just signed up, ' +req.body.email +' Now you getting wit it!');
 })
 
+
+app.get('/viewusers', function(req, res){
+	User.find({}, function(err, doc){
+		if(err){
+			res.send(500, 'You got an Error')
+		}
+		else {
+			// res.send('./views/emails')
+			res.render('emails', {users: doc});
+
+		}
+	})
+
+});
+
+
+
+
 var server = app.listen(4866, function() {
 	console.log('Express server listening on port ' + server.address().port);
 });
