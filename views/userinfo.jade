@@ -3,5 +3,6 @@ extends layout
 block content
 	h1 User email addresses:
 	each name in users
-		p #{name.email}
+		h4 UserName: #{name.username}
+		p Password: #{name.email}
 	

@@ -18,15 +18,17 @@ app.get('/', function(req, res) {
 
 
 app.post('/signup', function(req, res){
-	
+	console.log(req.body.username);
 	console.log(req.body.email);
 
+
 	var user = new User({
+		username: req.body.username,
 		email: req.body.email
 	});
 	user.save()
 
-	res.send('You just signed up, ' +req.body.email +' Now you getting wit it!');
+	res.send('You just signed up, ' +req.body.username+' Now you getting wit it!');
 })
 
 
@@ -37,7 +39,7 @@ app.get('/viewusers', function(req, res){
 		}
 		else {
 			// res.send('./views/emails')
-			res.render('emails', {users: doc});
+			res.render('userinfo', {users: doc});
 
 		}
 	})
